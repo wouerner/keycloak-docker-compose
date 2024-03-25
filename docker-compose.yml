@@ -13,7 +13,7 @@ services:
     environment:
       KC_HTTP_ENABLED: "true" 
       KEYCLOAK_ADMIN: ${KEYCLOAK_ADMIN-admin}
-      KEYCLOAK_ADMIN_PASSWORD: ${KEYCLOAK_ADMIN_PASSWORD-YuY73$jhZD2}
+      KEYCLOAK_ADMIN_PASSWORD: ${KEYCLOAK_ADMIN_PASSWORD-admin}
       KC_HOSTNAME: ${KC_HOSTNAME-localhost}
       keycloak.url: ${KEYCLOAK_URL-http://localhost}
       # KC_PROXY: edge improtant to traefik and nginx
