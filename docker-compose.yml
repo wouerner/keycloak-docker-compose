@@ -1,0 +1,30 @@
+version: '3'
+
+volumes:
+  keycloak_volume:
+
+services:
+
+  keycloak:
+    image: quay.io/keycloak/keycloak:23.0.4
+    command: ["start-dev"]
+    container_name: keycloak
+    user: "1000"
+    environment:
+      KC_HTTP_ENABLED: "true" 
+      KEYCLOAK_ADMIN: ${KEYCLOAK_ADMIN-admin}
+      KEYCLOAK_ADMIN_PASSWORD: ${KEYCLOAK_ADMIN_PASSWORD-YuY73$jhZD2}
+      KC_HOSTNAME: ${KC_HOSTNAME-localhost}
+      keycloak.url: ${KEYCLOAK_URL-http://localhost}
+      # KC_PROXY: edge improtant to traefik and nginx
+      KC_HEALTH_ENABLED: true
+      KC_LOG_LEVEL: info
+      KC_HOSTNAME_STRICT_HTTPS: false
+      HOSTNAME_STRICT: false
+      KC_HOSTNAME_STRICT: false
+    volumes:
+      - keycloak_volume:/opt/keycloak/data/
+    ports:
+      - 8080:8080
+    labels:
+      - maintainer=wouerner@soujunior.tech 
